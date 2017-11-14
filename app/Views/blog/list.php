@@ -20,13 +20,26 @@
         </div>
     </div>
     <div class="container">
-        <div class="row">
-            <div class="col content">
-                <h2><?= $data['page']['title']; ?></h2>
-                <hr>
-				<?= $data['page']['body']; ?>
+
+        <?php
+            foreach ($data['postlist'] as $post) {
+            
+            ?>
+
+            <div class="row">
+                <div class="col content">
+                    <h2><?= $post['title']; ?></h2>
+                    <hr>
+                    <?= $post['body']; ?>
+                </div>
             </div>
-        </div>
+
+            <?php
+
+            }
+
+        ?>
+
     </div>
 </div>
 <script src="/<?= CONFIG['site_path']; ?>/assets/js/script.js"></script>

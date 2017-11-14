@@ -13,10 +13,18 @@ if (phpversion() < 7) {
     die("<pre>Your server is using PHP version " . phpversion() . ".<br/>Please upgrade to PHP v7.0.25 or higher.");
 }
 
-// Autoload all Core classes
-spl_autoload_register(function ($class_name) {
-    include $class_name . ".php";
-});
+// // Autoload all Core classes
+// spl_autoload_register(function ($class_name) {
+
+//     include "Studijos\\Mordor\\".$class_name . ".php";
+// });
+
+include "uFrame/Controller.php";
+include "uFrame/Log.php";
+include "uFrame/Database.php";
+include "uFrame/App.php";
+
+
 
 // Including configuration variables
 require_once "config.php";
