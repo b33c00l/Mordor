@@ -60,28 +60,32 @@
             <small>or other news from USSR</small>
           </h1>
 
-          <?php
+  
 
-            foreach ($data['postList'] as $post) {
-
-          //<!-- Blog Post -->
-
-          echo '<div class="card mb-4">
+          <!-- Blog Post -->
+          <div class="card mb-4">
             <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
             <div class="card-body">
-              <h2 class="card-title">'.$post['title'].'</h2>
-              <p class="card-text">'.$post['body'].'</p>
-              <a <a href="/' . CONFIG['site_path'] . "/Blog/show/" . $post['id'] . '" >' . $post['title'] . '</a> 
+              <h2 class="card-title"><?= $data['post']['title']; ?></h2>
+              <p class="card-text"><?= $data['post']['body']; ?></p>
+              <a href="#" class="btn btn-primary">Read More &rarr;</a>
             </div>
             <div class="card-footer text-muted">
-              Posted on '.$post['date'].'
+              Posted on <?= $data['post']['date']; ?>
               <a href="#">Start Bootstrap</a>
             </div>
-          </div>';
+          </div>
 
-            }
 
-        ?>
+
+          <!-- Banners/links -->
+          <?php 
+                foreach ($data['banners'] as $banner) {
+                   echo  "<a class='btn btn-danger' href='" . $banner['link'] . "'>" . $banner['name'] . "</a>&nbsp";
+                }
+          ?>
+
+
 
           <!-- Pagination -->
           <ul class="pagination justify-content-center mb-4">
@@ -102,14 +106,12 @@
           <div class="card my-4">
             <h5 class="card-header">Search</h5>
             <div class="card-body">
-              <form action="/<?= CONFIG['site_path']; ?>/Blog/search" method="GET">
-                <div class="input-group">
-                  <input type="text" class="form-control" name='query' placeholder="Search for...">
-                  <span class="input-group-btn">
-                  <button class="btn btn-secondary" type="submit">Go!</button>
-                  </span>
-                </div>
-              </form>
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search for...">
+                <span class="input-group-btn">
+                  <button class="btn btn-secondary" type="button">Go!</button>
+                </span>
+              </div>
             </div>
           </div>
 
@@ -180,53 +182,3 @@
 
 </html>
 
-
-<!-- <!doctype html>
-<html lang="en">
-<head>
-    <title><?= $data['page']['title'] . " | " . CONFIG['site_title']; ?></title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="/<?= CONFIG['site_path']; ?>/assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/<?= CONFIG['site_path']; ?>/assets/css/style.css">
-</head>
-<body>
-<div class="container-fluid header">
-    <div class="container">
-        <div class="row">
-            <div class="col text-center">
-                <h1 class="display-3"><?= CONFIG['site_title']; ?></h1>
-                <p class="lead">A good place to start with PHP MVC</p><br/>
-                <a class="btn btn-sm btn-outline-light" href="/<?= CONFIG['site_path']; ?>">Home</a>
-                <a class="btn btn-sm btn-outline-light" href="/<?= CONFIG['site_path']; ?>/Home/hello">Hello world</a>
-            </div>
-        </div>
-    </div>
-    <div class="container">
-
-        <?php
-
-            foreach ($data['postList'] as $post) {
-            
-            ?>
-
-            <div class="row">
-                <div class="col content">
-                    <h2><?= $post['title']; ?></h2>
-                    <hr>
-                    <?= $post['body']; ?>
-                </div>
-            </div>
-
-            <?php
-
-            }
-
-        ?>
-
-    </div>
-</div>
-<script src="/<?= CONFIG['site_path']; ?>/assets/js/script.js"></script>
-</body>
-</html>
- -->

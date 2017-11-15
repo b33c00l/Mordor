@@ -6,7 +6,7 @@ define("CONFIG", [
 
     // Application
     "site_path" => "Studijos/Mordor",
-    "site_title" => "µFrame",
+    "site_title" => "Mordor",
 
     // Database
     "use_database" => true,

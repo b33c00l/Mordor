@@ -16,15 +16,36 @@ class Blog extends Controller
 
     }
 
-    public function show($page_name = "Home")
+    public function show($id)
     {
         // show single blog post by ID
 
-        $pageModel = $this->model("PageModel");
+        $bannerModel = $this->model("BannerModel");
+        $data['banners'] = $bannerModel->getRandom();
 
-        $data['page'] = $pageModel->getPage($page_name);
+        $blogModel = $this->model("BlogModel");
+        $data['post'] = $blogModel->getSingle($id);
 
         $this->view("blog/single", $data);
+        
+    }
+
+    public function search(){
+
+        //search method
+
+        if (empty($_GET['query'])) {
+            $this->index();
+        } else{
+
+            $blogModel = $this->model("BlogModel");
+
+            $data['postList'] = $blogModel->search($_GET['query']);
+
+            $this->view("blog/list", $data);
+
+        }
+
         
     }
 
